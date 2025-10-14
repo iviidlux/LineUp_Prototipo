@@ -1,0 +1,198 @@
+
+:root{
+  --brand-gradient: linear-gradient(90deg,#6a5af9 0%, #7b5cf5 40%, #8b5cf6 100%);
+}
+html,body{height:100%}
+.tarjeta-fondo{
+  background:#fff;
+  border-radius:24px;
+  box-shadow: 0 10px 30px rgba(18, 38, 63, 0.08);
+  border:1px solid rgba(0,0,0,.04);
+}
+.form-control, .form-select{
+  border-radius:14px;
+  padding:.9rem 1rem;
+}
+.input-group .form-control{border-radius:0 14px 14px 0}
+.btn-degradado{
+  background-image: var(--brand-gradient);
+  color:white;
+  border:none;
+  border-radius: 999px;
+  padding: .95rem 1.2rem;
+  font-weight: 700;
+  letter-spacing:.3px;
+}
+.btn-degradado:hover{filter:brightness(.95); color:white}
+.insignia-suave{background:rgba(108,117,125,.15); color:#6c757d}
+.lista-tarjetas .card{border:none; border-radius:18px; overflow:hidden}
+.lista-tarjetas .card img{object-fit:cover; height:160px}
+.bandera-pais{
+  width:24px; height:16px; background:#006847; display:inline-block; border:1px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.1) inset;
+}
+.heroe-busqueda{
+  background:#0d6efd;
+  background-image: radial-gradient(circle at 10% 10%, rgba(255,255,255,.08) 0 60%), var(--brand-gradient);
+  color:white;
+}
+.heroe-busqueda .form-control, .heroe-busqueda .form-select{
+  border:0; box-shadow:none;
+}
+.pie{
+  color:#6c757d;
+}
+
+
+.diseño{
+  --gap: 1.5rem;
+}
+.diseño__sidebar{
+  position: sticky;
+  top: 80px;
+}
+.panel-filtros{
+  background:#fff;
+  border-radius:20px;
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 6px 20px rgba(18,38,63,.06);
+}
+.panel-filtros__title{
+  font-weight:700;
+  font-size:1rem;
+}
+.grupo-filtro + .grupo-filtro{ border-top:1px solid rgba(0,0,0,.06); padding-top:1rem; margin-top:1rem;}
+.etiquetas{ display:flex; flex-wrap:wrap; gap:.5rem; }
+.etiqueta{
+  display:inline-flex; align-items:center; gap:.35rem;
+  padding:.45rem .85rem; border-radius:999px;
+  background:#fff; border:1px solid rgba(0,0,0,.12); color:#111827; font-weight:600;
+}
+.etiqueta--active{ background:#111827; color:#fff; border-color:#111827; }
+.entradas-precio .form-control{ max-width:120px; }
+.encabezado-resultados{ display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.tarjeta-negocio{
+  background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:22px; overflow:hidden;
+  box-shadow:0 6px 20px rgba(18,38,63,.06);
+}
+.tarjeta-negocio__media img{ height:180px; object-fit:cover; width:100%; }
+.tarjeta-negocio__body{ padding:1rem 1.25rem; }
+.tarjeta-negocio__title{ font-weight:800; font-size:1.05rem; margin:0 0 .25rem 0; }
+.tarjeta-negocio__meta{ color:#6b7280; font-size:.95rem; }
+.btn-borde-pastilla{
+  border-radius:999px;
+  padding:.6rem 1.1rem;
+}
+.titulo-seccion{ font-weight:800; }
+
+
+
+/* --- Visual Refresh: Barbería Theme --- */
+:root{
+  --bg:#0e0f12;
+  --surface:#15171b;
+  --surface-2:#1c1f24;
+  --text:#e7e9ee;
+  --muted:#9aa3ad;
+  --brand:#e43b4f;   /* rojo barbero */
+  --brand-2:#3c7be0; /* azul barbero */
+  --ring:rgba(228,59,79,.35);
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius:16px;
+}
+
+body.bg-light{ background:var(--bg)!important; color:var(--text); }
+.navbar.bg-dark{ background: linear-gradient(180deg, #101217, #0b0c10) !important; }
+.navbar .navbar-brand{ letter-spacing:.5px }
+.navbar .nav-link{ color:var(--muted)!important }
+.navbar .nav-link:hover{ color:var(--text)!important }
+
+.tarjeta-fondo, .panel-filtros, .card, .tarjeta-negocio{
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+.btn, .btn-dark{
+  border-radius: 999px;
+  border:1px solid rgba(255,255,255,.1);
+}
+.btn-dark{ background:#111319; }
+.btn-dark:hover{ background:#0d0f14; }
+
+.btn-primary{
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  border:0;
+}
+.btn-primary:hover{
+  filter: brightness(1.05);
+}
+
+h1,h2,h3,h4,h5{ color:var(--text); }
+.text-muted, .text-secondary{ color:var(--muted)!important }
+
+/* chips/etiquetas */
+.etiqueta, .etiqueta.btn{
+  border-radius: 999px;
+  background: #0f1116;
+  border:1px solid rgba(255,255,255,.08);
+  color: var(--text);
+}
+.etiqueta--active{ 
+  background: linear-gradient(90deg, rgba(228,59,79,.25), rgba(60,123,224,.25));
+  color: var(--text);
+  border-color: transparent;
+}
+
+/* Inputs */
+.form-control, .form-select{
+  background:#0f1218;
+  border:1px solid rgba(255,255,255,.08);
+  color:var(--text);
+  border-radius:12px;
+}
+.form-control:focus, .form-select:focus{
+  border-color: var(--ring);
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+/* Cards media rounded */
+.tarjeta-negocio__media img, .rounded-4{ border-radius: var(--radius)!important; }
+
+/* Subtle section spacing */
+section.py-5{ padding-top: 3.5rem!important; padding-bottom: 3.5rem!important; }
+
+
+/* --- Light Theme Restore (overrides) --- */
+body.bg-light{ background:#ffffff !important; color:#212529; }
+.navbar.bg-dark{ background:#111315 !important; } /* mantener navbar dark si se desea contraste */
+.card, .tarjeta-fondo, .panel-filtros, .tarjeta-negocio{
+  background:#ffffff !important;
+  color:#212529 !important;
+  border:1px solid #e9ecef !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,.08) !important;
+}
+.text-muted, .text-secondary{ color:#6c757d !important; }
+.form-control, .form-select{
+  background:#fff !important;
+  color:#212529 !important;
+  border:1px solid #ced4da !important;
+}
+.form-control:focus, .form-select:focus{
+  border-color:#86b7fe !important;
+  box-shadow:0 0 0 .25rem rgba(13,110,253,.25) !important;
+}
+.btn-dark{
+  background:#212529 !important;
+  border-color:#212529 !important;
+}
+/* chip base en claro */
+.etiqueta, .etiqueta.btn{
+  background:#f8f9fa !important;
+  color:#212529 !important;
+  border:1px solid #e9ecef !important;
+}
+.etiqueta--active{
+  background:#e9ecef !important;
+  border-color:#e9ecef !important;
+}

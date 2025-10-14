@@ -1,0 +1,302 @@
+
+/* Admin dashboard scoped styles (extends prototype theme) */
+:root{
+  /* Fallbacks in case the theme already defines them */
+  --panel-bg: #0f151c;
+  --panel-br: 22px;
+  --panel-bd: rgba(255,255,255,.06);
+  --muted: rgba(255,255,255,.6);
+  --chip-bg: rgba(255,255,255,.06);
+  --chip-bd: rgba(255,255,255,.08);
+  --ok: #22c55e;
+  --warn: #f59e0b;
+}
+body.bg-darkish{ background: radial-gradient(1800px 600px at 10% -10%, rgba(96,165,250,.12), transparent 40%), #0b0f14; }
+
+.admin-hero{
+  background: radial-gradient(1200px 400px at 20% -20%, rgba(96,165,250,.18), transparent 40%),
+              radial-gradient(1200px 400px at 110% -10%, rgba(94,234,212,.15), transparent 40%);
+  border:1px solid var(--panel-bd);
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.03);
+}
+.kpi-grid{ display:grid; gap:22px; grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media (max-width: 992px){ .kpi-grid{ grid-template-columns:1fr; } }
+
+.card-neo{
+  background: var(--panel-bg);
+  border:1px solid var(--panel-bd);
+  border-radius: 26px;
+  padding: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.02);
+}
+.card-neo .inner{
+  border:1px solid var(--panel-bd);
+  border-radius: 20px;
+  padding: 16px;
+  background: rgba(255,255,255,.02);
+}
+hr.sep{ border:0; border-top:1px solid var(--panel-bd); margin: 18px 0; }
+
+.badge-pill{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: 6px 12px; border-radius: 999px;
+  border:1px solid var(--panel-bd); background: var(--chip-bg); color: var(--muted); font-weight:600;
+}
+.badge-ok{ background: linear-gradient(135deg, #86efac, var(--ok)); color:#052e18; border-color: transparent; }
+.badge-warn{ background: linear-gradient(135deg, #fde68a, var(--warn)); color:#3d2a06; border-color: transparent; }
+
+.chips{ display:flex; gap:10px; flex-wrap:wrap }
+.chip{ padding:10px 14px; border-radius: 999px; background: var(--chip-bg); border:1px solid var(--chip-bd); color: var(--muted); font-weight:600 }
+
+.btn-pill{
+  border-radius: 16px !important;
+  padding: 10px 16px !important;
+  border:1px solid var(--panel-bd) !important;
+}
+.btn-grad{
+  background: var(--brand-gradient, linear-gradient(90deg,#6a5af9 0%, #5eead4 100%)) !important;
+  color: #0b0f14 !important;
+  border-color: transparent !important;
+  font-weight: 700 !important;
+}
+.btn-ghost{
+  background: transparent !important;
+  color: #fff !important;
+}
+.kpi-title{ color: var(--muted); font-weight:600 }
+.kpi-value{ font-size: clamp(28px, 4vw, 34px); font-weight: 800 }
+
+/* --- Charts & Data Tables (no-JS) --- */
+.table-neo {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-bd);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+}
+.table-neo thead th{ color: var(--muted); font-weight:600; background: rgba(255,255,255,.02); }
+.table-neo td, .table-neo th{ padding: 12px 14px; border-color: var(--panel-bd) !important; }
+
+.chart-bars{
+  display:flex; align-items:flex-end; gap:14px;
+  height: 220px; padding: 12px;
+  background: rgba(255,255,255,.02);
+  border:1px solid var(--panel-bd); border-radius:16px;
+}
+.chart-bars .col{
+  flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;
+
+  height:100%;
+}
+.chart-bars .track{
+  position:relative; width:100%; height:100%;
+  border:1px solid var(--panel-bd); border-radius:12px;
+  background: rgba(255,255,255,.02);
+  overflow:hidden;
+}
+.chart-bars .fill{
+  position:absolute; bottom:0; left:0; right:0;
+  height: calc((var(--v) / var(--max)) * 100%);
+  background: var(--brand-gradient, linear-gradient(135deg,#60a5fa,#5eead4));
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 6px 14px rgba(0,0,0,.25) inset;
+}
+.chart-bars .day{ font-size:12px; color: var(--muted); font-weight:600 }
+.chart-bars .val{ font-size:12px; opacity:.9 }
+
+.chart-hbars{
+  display:flex; flex-direction:column; gap:10px;
+  padding:12px; background: rgba(255,255,255,.02);
+  border:1px solid var(--panel-bd); border-radius:16px;
+}
+.chart-hbars .row{
+  display:grid; grid-template-columns: 120px 1fr 50px; align-items:center; gap:10px;
+}
+.chart-hbars .label{ font-size:12px; color: var(--muted); font-weight:600 }
+.chart-hbars .track{
+  position:relative; height: 14px; border-radius:10px;
+  border:1px solid var(--panel-bd); background: rgba(255,255,255,.02); overflow:hidden;
+}
+.chart-hbars .bar{
+  position:absolute; left:0; top:0; bottom:0; width: var(--w,50%);
+  background: var(--brand-gradient, linear-gradient(90deg,#6a5af9,#5eead4));
+  border-radius: 10px;
+}
+.chart-hbars .val{ font-size:12px; opacity:.9; text-align:right }
+
+/* Botón destacado 'Nueva cita' coherente con el panel y la página de citas */
+.btn-nueva-cita{
+  border-radius:16px !important;
+  padding:10px 18px !important;
+  font-weight:800 !important;
+  color:#0b0f14 !important;
+  background: var(--brand-gradient, linear-gradient(90deg,#6a5af9,#5eead4)) !important;
+  border:0 !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+.btn-nueva-cita:focus{ outline: none; box-shadow: 0 0 0 0.2rem rgba(94,234,212,.25) }
+
+/* === Tooltips for bar chart (CSS-only) === */
+.chart-bars .col{ position:relative; height:100% }
+.chart-bars .tooltip{
+  position:absolute; left:50%;
+  bottom: calc((var(--v)/var(--max)) * 100% + 14px);
+  transform: translateX(-50%) translateY(6px);
+  background: var(--panel-bg);
+  border:1px solid var(--panel-bd);
+  color:#fff;
+  font-weight:700;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:10px;
+  box-shadow:0 12px 28px rgba(0,0,0,.35);
+  opacity:0; pointer-events:none;
+  transition: opacity .18s ease, transform .18s ease;
+  white-space:nowrap;
+}
+.chart-bars .tooltip::after{
+  content:"";
+  position:absolute; top:100%; left:50%;
+  width:10px; height:10px;
+  background: var(--panel-bg);
+  border-left:1px solid var(--panel-bd);
+  border-bottom:1px solid var(--panel-bd);
+  transform: translateX(-50%) rotate(45deg);
+}
+.chart-bars .col:hover .tooltip{ opacity:1; transform: translateX(-50%) translateY(0) }
+
+/* === Services chart/table sizing adjustments === */
+.table-neo td, .table-neo th{ padding:10px 12px }
+.chart-hbars{ padding:10px }
+.chart-hbars .row{ grid-template-columns:120px 1fr 40px; min-height:28px }
+
+/* --- FIX: Vertical bars layout & sizing --- */
+.chart-bars{
+  display:flex; align-items:stretch; gap:14px;
+  height: 260px; padding: 16px 12px 8px;
+  background: rgba(255,255,255,.02);
+  border:1px solid var(--panel-bd); border-radius:16px;
+}
+.chart-bars .col{
+  flex:1 1 0; display:flex; flex-direction:column;
+  align-items:center; gap:8px; height:100%;
+}
+.chart-bars .track{
+  flex:1 1 auto; position:relative; width:100%;
+  border:1px solid var(--panel-bd); border-radius:12px;
+  background: rgba(255,255,255,.02); overflow:hidden;
+}
+.chart-bars .fill{
+  position:absolute; bottom:0; left:0; right:0;
+  height: calc((var(--v) / var(--max)) * 100%);
+  background: var(--brand-gradient, linear-gradient(135deg,#60a5fa,#5eead4));
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 6px 14px rgba(0,0,0,.25) inset;
+}
+.chart-bars .day{ font-size:12px; color: var(--muted); font-weight:700; line-height:1 }
+.chart-bars .val{ font-size:12px; opacity:.9; line-height:1 }
+.chart-bars .col{ position:relative }
+.chart-bars .tooltip{
+  position:absolute; left:50%;
+  bottom: calc((var(--v)/var(--max)) * 100% + 26px);
+  transform: translateX(-50%) translateY(6px);
+  background: var(--panel-bg);
+  border:1px solid var(--panel-bd);
+  color:#fff;
+  font-weight:700;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:10px;
+  box-shadow:0 12px 28px rgba(0,0,0,.35);
+  opacity:0; pointer-events:none;
+  transition: opacity .18s ease, transform .18s ease;
+  white-space:nowrap;
+}
+.chart-bars .tooltip::after{
+  content:"";
+  position:absolute; top:100%; left:50%;
+  width:10px; height:10px;
+  background: var(--panel-bg);
+  border-left:1px solid var(--panel-bd);
+  border-bottom:1px solid var(--panel-bd);
+  transform: translateX(-50%) rotate(45deg);
+}
+.chart-bars .col:hover .tooltip{ opacity:1; transform: translateX(-50%) translateY(0) }
+
+/* --- FIX: Services sizing match --- */
+.chart-hbars{ padding:12px; }
+.chart-hbars .row{ grid-template-columns: 140px 1fr 42px; min-height:30px }
+.chart-hbars .track{ height: 12px }
+.chart-hbars .bar{ height: 100% }
+
+/* --- CTA unified --- */
+.btn-nueva-cita{
+  border-radius:16px!important;
+  padding:10px 18px!important;
+  font-weight:800!important;
+  color:#0b0f14!important;
+  background: var(--brand-gradient, linear-gradient(90deg,#6a5af9,#5eead4))!important;
+  border:0!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+}
+
+/* ===== FINAL FIX PACK ===== */
+:root{
+  --panel-bg: #0f151c;
+  --panel-bd: rgba(255,255,255,.08);
+  --chip-bg: rgba(255,255,255,.06);
+  --muted: rgba(255,255,255,.60);
+  --brand-gradient: linear-gradient(90deg,#6a5af9 0%, #5eead4 100%);
+}
+/* Panel hero + badges */
+.admin-hero{background:radial-gradient(1200px 400px at 20% -20%, rgba(96,165,250,.18), transparent 40%), radial-gradient(1200px 400px at 110% -10%, rgba(94,234,212,.15), transparent 40%); border:1px solid var(--panel-bd); border-radius:28px; padding:22px; box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.03);}
+.badge-pill{display:inline-flex;align-items:center;justify-content:center;padding:6px 12px;border-radius:999px;border:1px solid var(--panel-bd);background:var(--chip-bg);color:var(--muted);font-weight:700}
+.btn-pill{border-radius:16px!important;padding:10px 16px!important;border:1px solid var(--panel-bd)!important}
+.btn-ghost{background:transparent!important;color:#fff!important}
+.btn-nueva-cita{border-radius:16px!important;padding:10px 18px!important;font-weight:800!important;color:#0b0f14!important;background:var(--brand-gradient)!important;border:0!important;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+
+/* Card base */
+.card-neo{background:var(--panel-bg); border:1px solid var(--panel-bd); border-radius:26px; padding:20px; box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.02)}
+.card-neo .inner{border:1px solid var(--panel-bd); border-radius:20px; padding:16px; background:rgba(255,255,255,.02)}
+.kpi-title{color:var(--muted);font-weight:600}
+.kpi-value{font-size:clamp(28px,4vw,34px);font-weight:800}
+hr.sep{border:0;border-top:1px solid var(--panel-bd);margin:18px 0}
+
+/* KPI grid */
+.kpi-grid{display:grid;gap:22px;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:992px){.kpi-grid{grid-template-columns:1fr}}
+
+/* ==== VERTICAL BAR CHART (no JS) ==== */
+.chart-wrap{border:1px solid var(--panel-bd); border-radius:20px; padding:14px; background:rgba(255,255,255,.02)}
+.chart-bars{display:flex; align-items:stretch; gap:14px; height:260px; padding:6px 6px 4px}
+.chart-bars .col{flex:1 1 0; display:flex; flex-direction:column; align-items:center; gap:8px; height:100%; position:relative}
+.chart-bars .track{flex:1 1 auto; position:relative; width:100%; border:1px solid var(--panel-bd); border-radius:12px; background:rgba(255,255,255,.03); overflow:hidden}
+.chart-bars .fill{position:absolute; bottom:0; left:0; right:0; height:calc((var(--v)/var(--max))*100%); background:var(--brand-gradient); border-radius:10px 10px 0 0; box-shadow:0 6px 14px rgba(0,0,0,.25) inset}
+.chart-bars .day{font-size:12px; color:var(--muted); font-weight:700; line-height:1}
+.chart-bars .val{font-size:12px; opacity:.9; line-height:1}
+/* Tooltips */
+.chart-bars .tooltip{position:absolute;left:50%;bottom:calc((var(--v)/var(--max))*100% + 22px);transform:translateX(-50%) translateY(6px);background:var(--panel-bg);border:1px solid var(--panel-bd);color:#fff;font-weight:700;font-size:12px;padding:6px 10px;border-radius:10px;box-shadow:0 12px 28px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease;white-space:nowrap}
+.chart-bars .tooltip::after{content:"";position:absolute;top:100%;left:50%;width:10px;height:10px;background:var(--panel-bg);border-left:1px solid var(--panel-bd);border-bottom:1px solid var(--panel-bd);transform:translateX(-50%) rotate(45deg)}
+.chart-bars .col:hover .tooltip{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ==== HORIZONTAL BARS (Servicios) ==== */
+.chart-hbars{padding:12px; background:rgba(255,255,255,.02); border:1px solid var(--panel-bd); border-radius:16px}
+.chart-hbars .row{display:grid; grid-template-columns:140px 1fr 42px; align-items:center; gap:12px; min-height:30px}
+.chart-hbars .label{font-size:12px; color:var(--muted); font-weight:700}
+.chart-hbars .track{height:12px; border:1px solid var(--panel-bd); border-radius:10px; background:rgba(255,255,255,.03); position:relative; overflow:hidden}
+.chart-hbars .bar{position:absolute; left:0; top:0; bottom:0; width:var(--w,50%); background:var(--brand-gradient); border-radius:10px}
+/* Tables look tighter */
+.table-neo{background:var(--panel-bg); border:1px solid var(--panel-bd); border-radius:22px; overflow:hidden; box-shadow:0 12px 40px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02)}
+.table-neo thead th{color:var(--muted);font-weight:600;background:rgba(255,255,255,.02)}
+.table-neo td,.table-neo th{padding:10px 12px; border-color:var(--panel-bd)!important}
+
+/* VAR GAP FOR CHART */
+.chart-bars{ gap: var(--gap,14px); }
+@media (max-width: 1200px){
+  .chart-bars{ --gap: 10px; }
+}
+@media (max-width: 992px){
+  .chart-bars{ --gap: 8px; }
+}

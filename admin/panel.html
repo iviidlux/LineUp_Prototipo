@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LineUp • Panel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="../assets/css/styles.css" rel="stylesheet" />
+  <link href="admin.css" rel="stylesheet" />
+</head>
+<body class="bg-darkish text-light" style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="../index.html">LineUp</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainnav" aria-controls="mainnav" aria-expanded="false" aria-label="Alternar navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainnav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="../index.html"><i class="bi bi-house"></i> Inicio</a></li>
+        <li class="nav-item"><a class="nav-link active" href="panel.html"><i class="bi bi-speedometer2"></i> Panel</a></li>
+        <li class="nav-item"><a class="nav-link" href="barberias.html"><i class="bi bi-building"></i> Barberías</a></li>
+        <li class="nav-item"><a class="nav-link" href="barberos.html"><i class="bi bi-scissors"></i> Barberos</a></li>
+        <li class="nav-item"><a class="nav-link" href="citas.html"><i class="bi bi-calendar2-check"></i> Citas</a></li>
+        <li class="nav-item"><a class="nav-link" href="clientes.html"><i class="bi bi-people"></i> Clientes</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <main class="py-4">
+    <div class="container">
+
+      <!-- HERO -->
+      <section class="admin-hero mb-4">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge-pill"><i class="bi bi-bell"></i></span>
+            <h1 class="h4 fw-bold m-0">LineUp • Panel</h1>
+          </div>
+          <div class="d-flex gap-2">
+            <a href="citas_form.html" class="btn-nueva-cita btn-pill"> Nueva cita</a>
+            <a href="barberias_form.html" class="btn btn-pill btn-ghost">Agregar barbería</a>
+            <a href="barberos_form.html" class="btn btn-pill btn-ghost">Agregar barbero</a>
+          </div>
+        </div>
+        <div class="mt-3 d-flex flex-wrap gap-2">
+          <span class="badge-pill">Hoy: 8 citas</span>
+          <span class="badge-pill">Semana: 46</span>
+          <span class="badge-pill">Ocupación: 82%</span>
+        </div>
+      </section>
+
+      <!-- KPIs -->
+      <section class="kpi-grid">
+        <article class="card-neo">
+          <div class="inner d-flex align-items-start justify-content-between">
+            <div>
+              <div class="kpi-title">Barberías activas</div>
+              <div class="kpi-value">10</div>
+            </div>
+            <span class="badge-pill" style="background:linear-gradient(135deg,#86efac,#22c55e);color:#052e18;border:0">OK</span>
+          </div>
+          <hr class="sep"/>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="barberias_form.html" class="btn btn-pill btn-ghost">Agregar</a>
+            <a href="barberias.html" class="btn btn-pill btn-ghost">Ver todas</a>
+            <a href="#" class="btn btn-pill btn-ghost">Exportar</a>
+          </div>
+        </article>
+
+        <article class="card-neo">
+          <div class="inner d-flex align-items-start justify-content-between">
+            <div>
+              <div class="kpi-title">Barberos</div>
+              <div class="kpi-value">12</div>
+            </div>
+            <span class="badge-pill" style="background:linear-gradient(135deg,#fde68a,#f59e0b);color:#3d2a06;border:0">Capacitar</span>
+          </div>
+          <hr class="sep"/>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="barberos_form.html" class="btn btn-pill btn-ghost">Agregar</a>
+            <a href="barberos.html" class="btn btn-pill btn-ghost">Ver todos</a>
+            <a href="#" class="btn btn-pill btn-ghost">Plantillas</a>
+          </div>
+        </article>
+
+        <article class="card-neo">
+          <div class="inner d-flex align-items-start justify-content-between">
+            <div>
+              <div class="kpi-title">Clientes</div>
+              <div class="kpi-value">24</div>
+            </div>
+            <span class="badge-pill">CRM</span>
+          </div>
+          <hr class="sep"/>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="clientes.html" class="btn btn-pill btn-ghost">Ver clientes</a>
+            <a href="#" class="btn btn-pill btn-ghost">Importar</a>
+            <a href="#" class="btn btn-pill btn-ghost">Descargar</a>
+          </div>
+        </article>
+      </section>
+
+      <!-- DATA SECTION -->
+      <section class="mt-4">
+        <div class="row g-3 align-items-stretch">
+          <!-- Table: Citas últimos 14 días -->
+          <div class="col-lg-6">
+            <div class="card-neo h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h2 class="h6 m-0">Citas — últimos 14 días</h2>
+                <span class="badge-pill">Quincena</span>
+              </div>
+              <div class="table-responsive table-neo">
+                <table class="table table-dark table-sm align-middle mb-0">
+                  <thead><tr><th>Día</th><th class="text-end">Citas</th></tr></thead>
+                  <tbody>
+                    <tr><td>Día 1</td><td class="text-end">4</td></tr>
+                    <tr><td>Día 2</td><td class="text-end">8</td></tr>
+                    <tr><td>Día 3</td><td class="text-end">6</td></tr>
+                    <tr><td>Día 4</td><td class="text-end">7</td></tr>
+                    <tr><td>Día 5</td><td class="text-end">9</td></tr>
+                    <tr><td>Día 6</td><td class="text-end">12</td></tr>
+                    <tr><td>Día 7</td><td class="text-end">5</td></tr>
+                    <tr><td>Día 8</td><td class="text-end">10</td></tr>
+                    <tr><td>Día 9</td><td class="text-end">11</td></tr>
+                    <tr><td>Día 10</td><td class="text-end">7</td></tr>
+                    <tr><td>Día 11</td><td class="text-end">8</td></tr>
+                    <tr><td>Día 12</td><td class="text-end">13</td></tr>
+                    <tr><td>Día 13</td><td class="text-end">9</td></tr>
+                    <tr><td>Día 14</td><td class="text-end">6</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- Chart: Citas últimos 14 días -->
+          <div class="col-lg-6">
+            <div class="card-neo h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h2 class="h6 m-0">Gráfica — Citas últimos 14 días</h2>
+                <span class="badge-pill">Quincena</span>
+              </div>
+              <div class="chart-wrap">
+                <div class="chart-bars" style="--max:13; --gap:10px">
+                  <div class="col" style="--v:4"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 1 • 4</div><div class="day">D1</div><div class="val">4</div></div>
+                  <div class="col" style="--v:8"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 2 • 8</div><div class="day">D2</div><div class="val">8</div></div>
+                  <div class="col" style="--v:6"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 3 • 6</div><div class="day">D3</div><div class="val">6</div></div>
+                  <div class="col" style="--v:7"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 4 • 7</div><div class="day">D4</div><div class="val">7</div></div>
+                  <div class="col" style="--v:9"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 5 • 9</div><div class="day">D5</div><div class="val">9</div></div>
+                  <div class="col" style="--v:12"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 6 • 12</div><div class="day">D6</div><div class="val">12</div></div>
+                  <div class="col" style="--v:5"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 7 • 5</div><div class="day">D7</div><div class="val">5</div></div>
+                  <div class="col" style="--v:10"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 8 • 10</div><div class="day">D8</div><div class="val">10</div></div>
+                  <div class="col" style="--v:11"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 9 • 11</div><div class="day">D9</div><div class="val">11</div></div>
+                  <div class="col" style="--v:7"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 10 • 7</div><div class="day">D10</div><div class="val">7</div></div>
+                  <div class="col" style="--v:8"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 11 • 8</div><div class="day">D11</div><div class="val">8</div></div>
+                  <div class="col" style="--v:13"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 12 • 13</div><div class="day">D12</div><div class="val">13</div></div>
+                  <div class="col" style="--v:9"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 13 • 9</div><div class="day">D13</div><div class="val">9</div></div>
+                  <div class="col" style="--v:6"><div class="track"><div class="fill"></div></div><div class="tooltip">Día 14 • 6</div><div class="day">D14</div><div class="val">6</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Servicios (10 items) -->
+        <div class="row g-3 align-items-stretch mt-1">
+          <div class="col-lg-6">
+            <div class="card-neo h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h2 class="h6 m-0">Servicios más solicitados</h2>
+                <span class="badge-pill">Top 10</span>
+              </div>
+              <div class="table-responsive table-neo">
+                <table class="table table-dark table-sm align-middle mb-0">
+                  <thead><tr><th>Servicio</th><th class="text-end">Reservas</th></tr></thead>
+                  <tbody>
+                    <tr><td>Fade</td><td class="text-end">120</td></tr>
+                    <tr><td>Corte clásico</td><td class="text-end">95</td></tr>
+                    <tr><td>Barba</td><td class="text-end">80</td></tr>
+                    <tr><td>Tinte</td><td class="text-end">44</td></tr>
+                    <tr><td>Afeitado</td><td class="text-end">40</td></tr>
+                    <tr><td>Diseño</td><td class="text-end">32</td></tr>
+                    <tr><td>Kids</td><td class="text-end">28</td></tr>
+                    <tr><td>Cejas</td><td class="text-end">22</td></tr>
+                    <tr><td>Keratina</td><td class="text-end">18</td></tr>
+                    <tr><td>Tratamiento</td><td class="text-end">15</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card-neo h-100">
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <h2 class="h6 m-0">Gráfica — Servicios</h2>
+                <span class="badge-pill">Top 10</span>
+              </div>
+              <div class="chart-hbars">
+                <div class="row" style="--w:100%"><div class="label">Fade</div><div class="track"><div class="bar"></div></div><div class="val">120</div></div>
+                <div class="row" style="--w:79%"><div class="label">Corte clásico</div><div class="track"><div class="bar"></div></div><div class="val">95</div></div>
+                <div class="row" style="--w:67%"><div class="label">Barba</div><div class="track"><div class="bar"></div></div><div class="val">80</div></div>
+                <div class="row" style="--w:37%"><div class="label">Tinte</div><div class="track"><div class="bar"></div></div><div class="val">44</div></div>
+                <div class="row" style="--w:33%"><div class="label">Afeitado</div><div class="track"><div class="bar"></div></div><div class="val">40</div></div>
+                <div class="row" style="--w:27%"><div class="label">Diseño</div><div class="track"><div class="bar"></div></div><div class="val">32</div></div>
+                <div class="row" style="--w:23%"><div class="label">Kids</div><div class="track"><div class="bar"></div></div><div class="val">28</div></div>
+                <div class="row" style="--w:18%"><div class="label">Cejas</div><div class="track"><div class="bar"></div></div><div class="val">22</div></div>
+                <div class="row" style="--w:15%"><div class="label">Keratina</div><div class="track"><div class="bar"></div></div><div class="val">18</div></div>
+                <div class="row" style="--w:12%"><div class="label">Tratamiento</div><div class="track"><div class="bar"></div></div><div class="val">15</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <pie class="py-4 border-top">
+    <div class="container d-flex justify-content-between pie">
+      <small>© 2025 LineUp</small>
+    </div>
+  </pie>
+</body>
+</html>
