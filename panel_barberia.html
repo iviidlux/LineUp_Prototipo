@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Barbería • Panel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/styles.css" rel="stylesheet">
+  <link href="admin/admin.css" rel="stylesheet">
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI; }
+    .photo-upload {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      border: 2px dashed var(--panel-bd);
+      border-radius: 16px;
+      background: rgba(255,255,255,.02);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .photo-upload:hover { background: rgba(255,255,255,.04); }
+    .photo-upload img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-upload input[type="file"] { display: none; }
+    .photo-upload-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .photo-upload:hover .photo-upload-overlay { opacity: 1; }
+    .schedule-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 100px 1fr 1fr 60px;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--panel-bd);
+      border-radius: 12px;
+    }
+    .service-item {
+      display: grid;
+      grid-template-columns: 1fr 120px 80px;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--panel-bd);
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+    .barber-card {
+      padding: 16px;
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--panel-bd);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .barber-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--brand-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #0b0f14;
+    }
+    .stats-mini {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .stat-card {
+      padding: 16px;
+      background: rgba(255,255,255,.02);
+      border: 1px solid var(--panel-bd);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .stat-value { font-size: 24px; font-weight: 800; }
+    .stat-label { font-size: 12px; color: var(--muted); font-weight: 600; }
+  </style>
+</head>
+<body class="bg-darkish text-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">LineUp</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainnav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainnav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#"><i class="bi bi-building"></i> Mi Barbería</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house"></i> Ver Sitio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="py-4">
+  <div class="container">
+    
+    <!-- Hero -->
+    <section class="admin-hero mb-4">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+        <div>
+          <h1 class="h4 fw-bold m-0">Barbería Centro</h1>
+          <p class="text-muted mb-0 mt-1"><i class="bi bi-geo-alt"></i> Col. Centro, Villahermosa</p>
+        </div>
+        <div class="d-flex gap-2">
+          <a href="barberia.html" target="_blank" class="btn btn-pill btn-ghost"><i class="bi bi-eye"></i> Ver perfil público</a>
+
+          
+          <a href="citas_barberia.pdf" target="_blank" rel="noopener" class="btn btn-pill btn-outline-secondary">
+            <i class="bi bi-download"></i> Exportar
+          </a>
+   
+
+          <button class="btn-nueva-cita" onclick="alert('Guardando cambios...')"><i class="bi bi-save"></i> Guardar cambios</button>
+        </div>
+      </div>
+      <div class="mt-3 d-flex flex-wrap gap-2">
+        <span class="badge-pill">Hoy: 8 citas</span>
+        <span class="badge-pill">Esta semana: 46</span>
+        <span class="badge-pill badge-ok">Activa</span>
+      </div>
+    </section>
+
+
+    <div class="stats-mini">
+      <div class="stat-card">
+        <div class="stat-value">327</div>
+        <div class="stat-label">Citas totales</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">8</div>
+        <div class="stat-label">Hoy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">4.8</div>
+        <div class="stat-label">Calificación</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">156</div>
+        <div class="stat-label">Clientes</div>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      
+      <!-- Información básica y foto -->
+      <div class="col-lg-6">
+        <div class="card-neo">
+          <h2 class="h6 mb-3"><i class="bi bi-image"></i> Foto principal</h2>
+          <label class="photo-upload" for="photoInput">
+            <img id="previewImg" src="assets/img/barberia-centro.jpeg" alt="Barbería">
+            <div class="photo-upload-overlay">
+              <i class="bi bi-camera" style="font-size: 32px;"></i>
+              <small class="mt-2">Cambiar foto</small>
+            </div>
+            <input type="file" id="photoInput" accept="image/*">
+          </label>
+          
+          <hr class="sep">
+          
+          <h2 class="h6 mb-3"><i class="bi bi-info-circle"></i> Información básica</h2>
+          <div class="mb-3">
+            <label class="form-label">Nombre de la barbería</label>
+            <input type="text" class="form-control bg-dark text-light border-secondary" value="Barbería Centro">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <textarea class="form-control bg-dark text-light border-secondary" rows="3">Corte masculino, Arreglo de barba, Tratamientos capilares profesionales.</textarea>
+          </div>
+          <div class="row g-2">
+            <div class="col-md-6">
+              <label class="form-label">Teléfono</label>
+              <input type="tel" class="form-control bg-dark text-light border-secondary" value="993 123 4567">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">WhatsApp</label>
+              <input type="tel" class="form-control bg-dark text-light border-secondary" value="993 123 4567">
+            </div>
+          </div>
+          <div class="mb-3 mt-3">
+            <label class="form-label">Dirección</label>
+            <input type="text" class="form-control bg-dark text-light border-secondary" value="Calle 60 #123, Col. Centro">
+          </div>
+        </div>
+      </div>
+
+      <!-- Horarios -->
+      <div class="col-lg-6">
+        <div class="card-neo">
+          <h2 class="h6 mb-3"><i class="bi bi-clock"></i> Horarios de atención</h2>
+          <div class="schedule-grid">
+            <div class="schedule-row">
+              <div class="fw-semibold">Lunes</div>
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="10:00">
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="20:00">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="fw-semibold">Martes</div>
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="10:00">
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="20:00">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="fw-semibold">Miércoles</div>
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="10:00">
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="20:00">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="fw-semibold">Jueves</div>
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="10:00">
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="20:00">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="fw-semibold">Viernes</div>
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="10:00">
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="20:00">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="fw-semibold">Sábado</div>
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="10:00">
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="18:00">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" checked>
+              </div>
+            </div>
+            <div class="schedule-row">
+              <div class="fw-semibold">Domingo</div>
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="10:00">
+              <input type="time" class="form-control form-control-sm bg-dark text-light border-secondary" value="15:00">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Servicios y precios -->
+      <div class="col-lg-6">
+        <div class="card-neo">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h6 m-0"><i class="bi bi-scissors"></i> Servicios y precios</h2>
+            <button class="btn btn-pill btn-ghost btn-sm" onclick="addService()"><i class="bi bi-plus-circle"></i> Agregar</button>
+          </div>
+          
+          <div id="servicesList">
+            <div class="service-item">
+              <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" value="Corte clásico">
+              <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary" value="120" placeholder="Precio">
+              <button class="btn btn-pill btn-ghost btn-sm"><i class="bi bi-trash"></i></button>
+            </div>
+            <div class="service-item">
+              <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" value="Fade">
+              <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary" value="150" placeholder="Precio">
+              <button class="btn btn-pill btn-ghost btn-sm"><i class="bi bi-trash"></i></button>
+            </div>
+            <div class="service-item">
+              <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" value="Arreglo de barba">
+              <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary" value="100" placeholder="Precio">
+              <button class="btn btn-pill btn-ghost btn-sm"><i class="bi bi-trash"></i></button>
+            </div>
+            <div class="service-item">
+              <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" value="Tinte">
+              <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary" value="200" placeholder="Precio">
+              <button class="btn btn-pill btn-ghost btn-sm"><i class="bi bi-trash"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barberos -->
+      <div class="col-lg-6">
+        <div class="card-neo">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h6 m-0"><i class="bi bi-people"></i> Barberos</h2>
+            <button class="btn btn-pill btn-ghost btn-sm" onclick="addBarber()"><i class="bi bi-plus-circle"></i> Agregar</button>
+          </div>
+          
+          <div id="barbersList">
+            <div class="barber-card">
+              <div class="barber-avatar">JP</div>
+              <div class="flex-grow-1">
+                <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary mb-2" value="Juan Pérez">
+                <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" value="Corte clásico, Tinte" placeholder="Especialidades">
+              </div>
+              <button class="btn btn-pill btn-ghost btn-sm"><i class="bi bi-trash"></i></button>
+            </div>
+            <div class="barber-card">
+              <div class="barber-avatar">AT</div>
+              <div class="flex-grow-1">
+                <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary mb-2" value="Ana Torres">
+                <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" value="Corte clásico, Tinte" placeholder="Especialidades">
+              </div>
+              <button class="btn btn-pill btn-ghost btn-sm"><i class="bi bi-trash"></i></button>
+            </div>
+            <div class="barber-card">
+              <div class="barber-avatar">LD</div>
+              <div class="flex-grow-1">
+                <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary mb-2" value="Luis Díaz">
+                <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" value="Arreglo de barba" placeholder="Especialidades">
+              </div>
+              <button class="btn btn-pill btn-ghost btn-sm"><i class="bi bi-trash"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Galería adicional -->
+      <div class="col-12">
+        <div class="card-neo">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="h6 m-0"><i class="bi bi-images"></i> Galería de fotos</h2>
+            <button class="btn btn-pill btn-ghost btn-sm"><i class="bi bi-plus-circle"></i> Agregar fotos</button>
+          </div>
+          <div class="row g-2">
+            <div class="col-6 col-md-3">
+              <div class="photo-upload" style="height: 150px;">
+                <img src="assets/img/barberia-centro.jpeg" alt="Foto 1">
+                <div class="photo-upload-overlay">
+                  <i class="bi bi-trash" style="font-size: 24px;"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="photo-upload" style="height: 150px;">
+                <img src="assets/img/barberia-tabasco.webp" alt="Foto 2">
+                <div class="photo-upload-overlay">
+                  <i class="bi bi-trash" style="font-size: 24px;"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <div class="photo-upload" style="height: 150px;">
+                <img src="assets/img/barberia-casablanca.webp" alt="Foto 3">
+                <div class="photo-upload-overlay">
+                  <i class="bi bi-trash" style="font-size: 24px;"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <label class="photo-upload" for="galleryInput" style="height: 150px;">
+                <i class="bi bi-plus-circle" style="font-size: 32px;"></i>
+                <input type="file" id="galleryInput" accept="image/*" multiple>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Botones finales -->
+    <div class="d-flex justify-content-center gap-3 mt-4">
+      <button class="btn-nueva-cita" onclick="alert('Cambios guardados exitosamente')"><i class="bi bi-save"></i> Guardar todos los cambios</button>
+      <a href="index.html" class="btn btn-pill btn-ghost">Cancelar</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="py-4 border-top mt-5">
+  <div class="container text-center">
+    <small class="text-muted">© 2025 LineUp • Panel de Barbería</small>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Preview de imagen
+document.getElementById('photoInput')?.addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('previewImg').src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Agregar servicio
+function addService() {
+  const list = document.getElementById('servicesList');
+  const newService = document.createElement('div');
+  newService.className = 'service-item';
+  newService.innerHTML = `
+    <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="Nombre del servicio">
+    <input type="number" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="Precio">
+    <button class="btn btn-pill btn-ghost btn-sm" onclick="this.parentElement.remove()"><i class="bi bi-trash"></i></button>
+  `;
+  list.appendChild(newService);
+}
+
+// Agregar barbero
+function addBarber() {
+  const list = document.getElementById('barbersList');
+  const newBarber = document.createElement('div');
+  newBarber.className = 'barber-card';
+  newBarber.innerHTML = `
+    <div class="barber-avatar">?</div>
+    <div class="flex-grow-1">
+      <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary mb-2" placeholder="Nombre del barbero">
+      <input type="text" class="form-control form-control-sm bg-dark text-light border-secondary" placeholder="Especialidades">
+    </div>
+    <button class="btn btn-pill btn-ghost btn-sm" onclick="this.parentElement.remove()"><i class="bi bi-trash"></i></button>
+  `;
+  list.appendChild(newBarber);
+}
+</script>
+
+</body>
+</html>
